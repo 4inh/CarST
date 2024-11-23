@@ -1,0 +1,138 @@
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+}
+
+html {
+      scroll-behavior: smooth;
+      font-family: Helvetica, Arial, sans-serif;
+}
+
+.tc-bg {
+      background-color: #232f3e;
+}
+.tc-logo {
+      max-height: 80px;
+}
+.clrtxt {
+      color: #ff661b !important;
+}
+
+.nav-link:hover {
+      color: #ff661b !important;
+}
+
+.nav-link {
+      font-weight: 500 !important;
+}
+
+.menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+}
+
+.menu>li {
+      display: inline-block;
+      position: relative;
+}
+
+.menu>li>a {
+      display: block;
+      text-decoration: none;
+}
+
+.sub-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      display: none;
+}
+
+.sub-menu li {
+      display: block;
+}
+
+.menu li:hover>.sub-menu {
+      display: block;
+}
+
+.sub-menu a {
+      width: 200px;
+      display: block;
+      background-color: #ccc;
+      color: #232f3e !important;
+      padding: 16px;
+      text-decoration: none;
+}
+
+.sub-menu a:hover {
+      background-color: #232f3e;
+}
+
+/* .ctxe:hover a {
+      color: #fff !important;
+} */
+
+#footer .socials-list {
+      font-size: 16px;
+}
+
+#footer .socials-list a {
+      color: #fff;
+      font-size: 32px;
+      text-decoration: none;
+      cursor: pointer;
+}
+#footer .socials-list p {
+      color: #fff;
+}
+#footer .copyright a:hover,
+#footer .socials-list a:hover {
+      color: #ff661b;
+}
+
+#footer .copyright,
+#footer .copyright a {
+      margin-top: 15px;
+      color: #fff;
+}
+
+.ldt {
+      position: fixed !important;
+      bottom: 50px !important;
+      right: 50px !important;
+      font-size: 30px !important;
+      color: #ff661b;
+}
+
+.ldt:hover {
+      color: #ff671ba4;
+}
+
+.image-container {
+      overflow: hidden;
+}
+
+.image-container img {
+      transition: transform 0.2s ease-out;
+}
+
+.image-container:hover img {
+      transform: scale(1.1);
+}
+.ds-img{
+      width: 100%;
+      height: 100%;
+}
+.mrt {
+      padding-top: 8px;
+}
+.ahover:hover a {
+      color:#fff !important;
+}
+.fs16 {
+      font-size: 16px !important;
+}

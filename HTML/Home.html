@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/CSS/style.css">
+      <link rel="stylesheet" href="/CSS/responsive.css">
+      <link rel="stylesheet" href="/FONT/themify-icons/themify-icons.css">
+      <link rel="stylesheet" href="/FONT/fontawesome-free-6.3.0/css/all.min.css">
+      <title>OTO - Thế giới ô tô</title>
+      <link rel="icon" href="/FONT/Logo/logo.svg">
+      <link rel="stylesheet" href="/JS/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+      <script src="/JS/jquery-3.6.4.min.js"></script>
+      <script src="/JS/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+      <style>
+            .slideshow {
+                  position: relative;
+                  width: 100%;
+                  height: 500px;
+                  overflow: hidden;
+            }
+
+            .slideshow img {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+            }
+
+            .slideshow .caption {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 100%;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  color: #fff;
+                  padding: 20px;
+                  box-sizing: border-box;
+                  font-size: 20px;
+                  font-weight: bold;
+            }
+      </style>
+      <script>
+            let pt1 = {
+                  id: 1,
+                  name: "Mâm đúc chính hãng KIA | 529101D201T157",
+                  hinh: "../img/ptm2.jpg",
+                  gia: "2.357.000 VND",
+                  ktdg: "50 x 50 x 50",
+                  xs: "Korea (South)",
+                  dvt: "Cái"
+            };
+            let pt2 = {
+                  id: 2,
+                  name: "Mâm đúc chính hãng KIA 15 inch | L520KTA0100",
+                  hinh: "../img/ptm3.jpg",
+                  gia: "1.950.000 VND",
+                  ktdg: "50 x 50 x 30",
+                  xs: "Viet Nam",
+                  dvt: "Cái"
+            };
+            let pt3 = {
+                  id: 3,
+                  name: "Mâm đúc chính hãng KIA | 5291007101I389",
+                  hinh: "../img/ptm4.jpg",
+                  gia: "1.850.000 VND",
+                  ktdg: "50 x 50 x 30",
+                  xs: "Korea (South)",
+                  dvt: "Cái"
+            };
+            let pt4 = {
+                  id: 4,
+                  name: "Bóng đèn trần xe chính hãng KIA | 92879A4000",
+                  hinh: "../img/ptm5.jpg",
+                  gia: "850.000 VND",
+                  ktdg: "Đang cập nhật",
+                  xs: "Korea (South)",
+                  dvt: "Cái"
+            };
+            let pt5 = {
+                  id: 5,
+                  name: "Bóng đèn chân ghim 3w chính hãng HYUNDAI KIA | 1864305009N",
+                  hinh: "../img/ptm6.jpg",
+                  gia: "200.000 VND",
+                  ktdg: "5 x 5 x 5",
+                  xs: "Korea (South)",
+                  dvt: "Cái"
+            };
+            let pt6 = {
+                  id: 6,
+                  name: "Bóng đèn cản trước H8 chính hãng KIA | 1864935009L",
+                  hinh: "../img/ptm7.jpg",
+                  gia: "300.000 VND",
+                  ktdg: "7 x 5 x 5",
+                  xs: "Korea (South)",
+                  dvt: "Cái"
+            };
+            let listpt = [pt1, pt2, pt3, pt4, pt5, pt6];
+
+
+            function hienthipt(mapt) {
+                  let pt = listpt.find(xetpt => xetpt.id === mapt)
+                  localStorage.setItem("Mapt", pt.id);
+                  localStorage.setItem("Tenpt", pt.name);
+                  localStorage.setItem("Hinhpt", pt.hinh);
+                  localStorage.setItem("Giapt", pt.gia);
+                  localStorage.setItem("Ktdg", pt.ktdg);
+                  localStorage.setItem("Xs", pt.xs);
+                  localStorage.setItem("Dvt", pt.dvt)
+            }
+            $(document).ready(function () {
+
+
+                  listpt.forEach(element => {
+
+                        let pt = " <div class='image-container col-12 col-md-6 col-lg-4 text-dark bg-light my-4' style='box-shadow: 6px 6px 18px #000; border: 6px solid gray;'>     <h2>  <a href='/HTML/Chitietphutung.html' onclick='hienthipt(" + element.id + ")'> <img class='ds-img' src='" + element.hinh + "' ></a></h2>  <br><h3>" + element.name + "</h3>    </div>";
+                        $("#dspt").append(pt);
+                  });
+            });
+            let car1 = {
+                  id: 1,
+                  name: "Honda City",
+                  hinh: "../img/honda.jpg",
+                  gia: "529 - 599 Triệu",
+                  congsuat: "118 - 119 PS",
+                  ct: "Sedan",
+                  hopso: "CVT"
+            };
+            let car2 = {
+                  id: 2,
+                  name: "Hyundai Creata",
+                  hinh: "../img/hyundai.jpg",
+                  gia: "620 - 730 Triệu",
+                  congsuat: "118 - 119 PS",
+                  ct: "SUV",
+                  hopso: "CVT"
+            };
+            let car3 = {
+                  id: 3,
+                  name: "Mazda CX-5",
+                  hinh: "../img/mazda.jpg",
+                  gia: "829 - 1059 Triệu",
+                  congsuat: "140 - 188 PS",
+                  ct: "SUV",
+                  hopso: "AT"
+            };
+            let car4 = {
+                  id: 4,
+                  name: "Mitsubishi Xpander",
+                  hinh: "../img/mitsubishi.jpg",
+                  gia: "555 - 650 Triệu",
+                  congsuat: "77 PS",
+                  ct: "MPV",
+                  hopso: "AT / MT"
+            };
+            let car5 = {
+                  id: 5,
+                  name: "Toyota Corolla Cross",
+                  hinh: "../img/toyota.jpg",
+                  gia: "720 - 910 Triệu",
+                  congsuat: "97 - 138 PS",
+                  ct: "SUV",
+                  hopso: "CVT"
+            };
+            let car6 = {
+                  id: 6,
+                  name: "Vinfast Lux A2.0",
+                  hinh: "../img/vinfast.jpg",
+                  gia: "1115 - 1358 Triệu",
+                  congsuat: "174 - 228 PS",
+                  ct: "Sedan",
+                  hopso: "AT"
+            };
+            let listcar = [car1, car2, car3, car4, car5, car6];
+
+
+            function hienthi(ma) {
+                  let xe = listcar.find(xetmp => xetmp.id === ma)
+                  localStorage.setItem("Maxe", xe.id);
+                  localStorage.setItem("Ten", xe.name);
+                  localStorage.setItem("Hinh", xe.hinh);
+                  localStorage.setItem("Gia", xe.gia);
+                  localStorage.setItem("Congsuat", xe.congsuat);
+                  localStorage.setItem("Ct", xe.ct);
+                  localStorage.setItem("Hopso", xe.hopso)
+            }
+            $(document).ready(function () {
+
+
+                  listcar.forEach(element => {
+
+                        let car = "<div class='image-container col-12 col-md-6 col-lg-4 text-dark bg-light my-4' style='box-shadow: 6px 6px 18px #000; border: 6px solid gray;'>     <h2>  <a href='chitietxe.html' onclick='hienthi(" + element.id + ")'> <img class='ds-img' src='" + element.hinh + "' ></a></h2>  <br><h3>" + element.name + "</h3>    </div>";
+                        $("#dsxe").append(car);
+                  });
+            });
+      </script>
+</head>
+
+<body>
+      <!-- Header -->
+      <div class="container-fluid px-0">
+            <nav class="navbar navbar-expand-lg tc-bg">
+                  <div class="container-fluid">
+                        <img src="/FONT/Logo/logo.png" class="navbar-brand tc-logo" alt="">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                              aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                              <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm tại đây ..."
+                                          aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit">Tìm kiếm</button>
+                              </form>
+                              <ul class="navbar-nav ms-auto menu">
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/Home.html">Trang chủ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/DangKy.html">Đăng ký</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/DangNhap.html">Đăng nhập</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/Home.html">Danh sách sản phẩm</a>
+                                          <ul class="sub-menu">
+                                                <li><a class="nav-link text-light border" href="#dsspxe">Danh sách xe</a></li>
+                                                <li><a class="nav-link text-light border" href="#dssppt">Danh sách phụ tùng</a></li>
+                                          </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/GioiThieuThanhVien.html">Thành viên
+                                                thực hiện</a>
+                                    </li>
+                              </ul>
+                        </div>
+                  </div>
+            </nav>
+      </div>
+      <!-- End Header -->
+      <div class="container tc-bg">
+            <!-- Slide Show -->
+            <div class="container">
+                  <div class="slideshow">
+                        <img src="/IMG/honda.jpg" alt="Slide 1" class="">
+                        <img src="/IMG/hyundai.jpg" alt="Slide 2" class="">
+                        <img src="/IMG/mazda.jpg" alt="Slide 3" class="">
+                        <img src="/IMG/mitsubishi.jpg" alt="Slide 4" class="">
+                        <img src="/IMG/toyota.jpg" alt="Slide 5" class="">
+                        <img src="/IMG/vinfast.jpg" alt="Slide 6" class="">
+                        <div class="caption">OTO - Nơi thế giới trong tầm tay bạn!</div>
+                  </div>
+                  <script>
+                        $(document).ready(function () {
+                              var slides = $('.slideshow img');
+                              var numSlides = slides.length;
+                              var currentSlideIndex = 0;
+                              var slideInterval = setInterval(nextSlide, 3000);
+                              function nextSlide() {
+                                    slides.eq(currentSlideIndex).fadeOut(1000);
+                                    currentSlideIndex = (currentSlideIndex + 1) % numSlides;
+                                    slides.eq(currentSlideIndex).fadeIn(1000);
+                              }
+                        });
+                  </script>
+            </div>
+            <!-- End Slide Show -->
+            <!-- Danh sách sản phẩm -->
+            <div class="container mrt">
+                  <div class="rounded border p-3" style="background-color: #232f3e;">
+                        <h2 class="text-center text-light" id="dsspxe">Danh sách xe</h2>
+                  </div>
+                  <div class="mx-auto">
+                        <div id="dsxe" class="row mx-auto"></div>
+                  </div>
+            </div>
+            <div class="container mrt">
+                  <div class="rounded border p-3" style="background-color: #232f3e;">
+                        <h2 class="text-center text-light" id="dssppt">Danh sách phụ tùng</h2>
+                  </div>
+                  <div class="mx-auto">
+                        <div id="dspt" class="row mx-auto"></div>
+                  </div>
+            </div>
+      </div>
+      <!-- Footer -->
+      <div class="container-fluid px-0 tc-bg mrt">
+            <div class="row px-0">
+                  <div id="footer" class="col-12 col-lg-3 text-start px-4">
+                        <div class="socials-list">
+                              <div class="container">
+                                    <h2 class="copyright mb-4">OTO</h2>
+                                    <ul class="list-unstyled">
+                                       <li>
+                                          <a href="/HTML/Home.html" class="fs16">Trang chủ</a>
+                                          <ul class="list-unstyled ms-3">
+                                             <li>
+                                                <a href="/HTML/Home.html" class="fs16">Danh sách sản phẩm</a>
+                                                <ul class="list-unstyled ms-3">
+                                                   <li><a href="#dsspxe" class="fs16">Xe</a></li>
+                                                   <li><a href="#dssppt" class="fs16">Phụ tùng</a></li>
+                                                </ul>
+                                             </li>
+                                             <li><a href="/HTML/DangKy.html" class="fs16">Đăng ký</a></li>
+                                             <li><a href="/HTML/DangNhap.html" class="fs16">Đăng nhập</a></li>
+                                          </ul>
+                                       </li>
+                                       <li><a href="/HTML/GioiThieuThanhVien.html" class="fs16">Thành viên thực hiện</a>
+                                       </li>
+                                    </ul>
+                              </div>
+                        </div>
+                  </div>
+                  <div id="footer" class="col-12 col-lg-3 text-start px-4">
+                        <div class="socials-list">
+                              <h2 class="copyright">Giới thiệu</h2>
+                              <p class="copyright">OTO được khách hàng yêu thích độ xe biết đến như một địa chỉ uy tín
+                                    với thế
+                                    mạnh về hàng hóa chất lượng, các thương hiệu sản phẩm độc quyền và đội ngũ kỹ thuật
+                                    nhiều
+                                    năm kinh nghiệm.</p>
+                              <p><i class="fa fa-location-dot"></i> 12 Nguyễn Văn Bảo, Phường 4, Gò Vấp, Thành phố Hồ
+                                    Chí Minh</p>
+                              <P><i class="fas fa-phone"></i> +84 23456789</P>
+                              <p><i class="fa fa-envelope"></i> oto23456789@gmail.com</p>
+                        </div>
+                  </div>
+                  <div id="footer" class="text-start col-12 col-lg-3 px-4">
+                        <div class="socials-list">
+                              <h3 class="copyright">Đăng ký nhận thông tin</h3>
+                              <p class="copyright">Đăng ký email để nhận những thông tin mới nhất từ chúng tôi</p>
+                              <input type="email" class="form-control" placeholder="Địa chỉ email">
+                              <br>
+                              <button type="button" class="btn btn-outline-success">Đăng ký</button>
+                              <br><br>
+                              <p>Mọi thông tin góp ý, vui lòng liên hệ hotline: +84 23456789</p>
+                              <p>Email báo giá liên hệ: baogiaoto@gmail.vn</p>
+                              <p>Đặt hàng: +84 23456789</p>
+                              <button type="button" class="btn btn-outline-info">Tư vấn ngay</button>
+                        </div>
+                  </div>
+                  <div id="footer" class="text-center col-12 col-lg-3 px-4">
+                        <div class="socials-list">
+                              <h3 class="copyright">Kết nối với chúng tôi</h3>
+                              <p class="copyright">Kết nối tới các mạng xã hội của chúng tôi để không bỏ lỡ khuyến mãi
+                                    lớn nào.</p>
+                              <a href=""><i class="ti-facebook mx-3"></i></a>
+                              <a href=""><i class="ti-instagram mx-3"></i></a>
+                              <a href=""><i class="ti-twitter mx-3"></i></a>
+                        </div>
+                  </div>
+                  <div class="col-12">
+                        <div class="w-100">
+                              <img src="/FONT/Logo/logo.png" class="img-fluid mx-auto d-block" style="width: 200px;"
+                                    alt="">
+                        </div>
+                        <h4 class="text-center text-light">Chúng tôi luôn sẵn sàng phục vụ và đồng hành cùng bạn trên
+                              mọi nẻo đường!</h4>
+                        <p class="text-center text-light">&copy;2023 Bản quyền thuộc về OTO</p>
+                  </div>
+            </div>
+            <button onclick="lendautrang()" class="border-0">
+                  <i class="ti-arrow-circle-up ldt"></i>
+            </button>
+            <script>
+                  function lendautrang() {
+                        window.scrollTo({
+                              top: 0,
+                              behavior: "smooth"
+                        });
+                  };
+            </script>
+      </div>
+      <!-- End Footer -->
+
+</body>
+
+</html>

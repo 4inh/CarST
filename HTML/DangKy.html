@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/CSS/style.css">
+      <link rel="stylesheet" href="/CSS/responsive.css">
+      <link rel="stylesheet" href="/FONT/themify-icons/themify-icons.css">
+      <link rel="stylesheet" href="/FONT/fontawesome-free-6.3.0/css/all.min.css">
+      <title>OTO - Thế giới ô tô</title>
+      <link rel="icon" href="/FONT/Logo/logo.svg">
+      <link rel="stylesheet" href="/JS/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+      <script src="/JS/jquery-3.6.4.min.js"></script>
+      <script src="/JS/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+      <script>
+            $(document).ready(function () {
+                  var i = 1;
+                  function kthvt() {
+                        let temp = $("#iphvt").val();
+                        let pattemp = /^([A-Z]{1}[a-z]*\s)+([A-Z]{1}[a-z]*)$/;
+                        if (pattemp.test(temp)) {
+                              $("#errhvt").html("(*)");
+                              return true;
+                        }
+                        else {
+                              $("#errhvt").html("Nhập sai cú pháp!");
+                              return false;
+                        }
+                  }
+                  $("#iphvt").blur(function (e) {
+                        kthvt();
+                  });
+                  function ktdt() {
+                        let temp = $("#ipdt").val();
+                        let pattemp = /^0\d{9}$/;
+                        if (pattemp.test(temp)) {
+                              $("#errdt").html("(*)");
+                              return true;
+                        }
+                        else {
+                              $("#errdt").html("Nhập sai cú pháp!");
+                              return false;
+                        }
+                  }
+                  $("#ipdt").blur(function (e) {
+                        ktdt();
+                  });
+                  function kttdn() {
+                        let temp = $("#iptdn").val();
+                        let pattemp = /^\w{3,}$/;
+                        if (pattemp.test(temp)) {
+                              $("#errtdn").html("(*)");
+                              return true;
+                        }
+                        else {
+                              $("#errtdn").html("Nhập sai cú pháp!");
+                              return false;
+                        }
+                  }
+                  $("#iptdn").blur(function (e) {
+                        kttdn();
+                  });
+                  function ktmk() {
+                        let temp = $("#ipmk").val();
+                        let pattemp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/; //Yêu cầu phải có 6 ký tự và thuộc trong danh sách này
+                        if (pattemp.test(temp)) {
+                              $("#errmk").html("(*)");
+                              return true;
+                        }
+                        else {
+                              $("#errmk").html("Nhập sai cú pháp!");
+                              return false;
+                        }
+                  }
+                  $("#ipmk").blur(function (e) {
+                        ktmk();
+                  });
+                  function ktemail() {
+                        let temp = $("#ipemail").val();
+                        let pattemp = /^\w{6,}(@gmail.com)$/;
+                        if (pattemp.test(temp)) {
+                              $("#erremail").html("(*)");
+                              return true;
+                        }
+                        else {
+                              $("#erremail").html("Nhập sai cú pháp!");
+                              return false;
+                        }
+                  }
+                  $("#ipemail").blur(function (e) {
+                        ktemail();
+                  });
+                  function ktns() {
+                        let nht = new Date(); //Lấy ngày hiện tại
+                        let nbd = new Date($("#ipns").val()); //Lấy ngày được nhập vào
+                        let ss = new Date(nht.getFullYear() - 18, nht.getMonth(), nht.getDate()); //Tạo ra 1 ngày so sánh (nhỏ hơn ngày hiện tại 18 năm)
+                        if (nbd <= ss) {
+                              $("#errns").html("");
+                              return true;
+                        }
+                        else {
+                              $("#errns").html("Bạn chưa đủ 18 tuổi!");
+                              return false;
+                        }
+                  }
+                  $("#ipns").blur(function (e) {
+                        ktns();
+                  });
+                  $("#btndk").click(function (e) {
+                        let hvt = $("#iphvt").val();
+                        let gt = $("input[name='gioitinh']:checked").val();
+                        let ns = $("#ipns").val();
+                        let tdn = $("#iptdn").val();
+                        if (kthvt() && kttdn() && ktmk() && ktdt() && ktemail() && ktns()) {
+                              let trnew = "<tr><td>" + (i++) + "</td><td>" + hvt + "</td><td>" + gt + "</td><td>" + ns + "</td><td>" + tdn + "</td></tr>";
+                              $("#tbldk").append(trnew);
+                        }
+                  });
+                  $("#btnxr").click(function (e) {
+                        $("#iphvt").val("");
+                        $("input[name='gioitinh']").prop("checked", false);
+                        $("#ipdt").val("");
+                        $("#ipns").val("");
+                        $("#iptdn").val("");
+                        $("#ipmk").val("");
+                        $("#ipemail").val("");
+                  });
+            });
+      </script>
+</head>
+
+<body>
+      <!-- Header -->
+      <div class="container-fluid px-0">
+            <nav class="navbar navbar-expand-lg tc-bg">
+                  <div class="container-fluid">
+                        <img src="/FONT/Logo/logo.png" class="navbar-brand tc-logo" alt="">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                              aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                              <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm tại đây ..."
+                                          aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit">Tìm kiếm</button>
+                              </form>
+                              <ul class="navbar-nav ms-auto menu">
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/Home.html">Trang chủ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/DangKy.html">Đăng ký</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/DangNhap.html">Đăng nhập</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/Home.html"> Danh sách sản phẩm</a>
+                                          <ul class="sub-menu">
+                                                <li><a class="nav-link text-light border" href="#dsspxe">Danh sách
+                                                            xe</a></li>
+                                                <li><a class="nav-link text-light border" href="#dssppt">Danh sách phụ
+                                                            tùng</a></li>
+                                          </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link text-light" href="/HTML/GioiThieuThanhVien.html">Thành viên
+                                                thực hiện</a>
+                                    </li>
+                              </ul>
+                        </div>
+                  </div>
+            </nav>
+      </div>
+      <!-- End Header -->
+      <div class="container">
+
+      </div>
+      <div class="modal modal-lg fade" id="modaldk">
+            <div class="modal-dialog">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h2 class="m-4 text-success">Đăng ký thành viên</h4>
+                                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                              <div class="mb-3">
+                                    <label for="" class="form-label">Họ và tên</label>
+                                    <input type="text" id="iphvt" class="form-control" placeholder="VD: Nguyen Van Bo">
+                                    <span class="text-danger" id="errhvt">(*)</span>
+                              </div>
+                              <div class="form-check-inline mb-3">
+                                    <label for="" class="form-check-label">Giới tính</label>
+                                    <input type="radio" name="gioitinh" value="Nam" class="form-check-input mx-2">Nam
+                                    <input type="radio" name="gioitinh" value="Nữ" class="form-check-input mx-2">Nữ
+                              </div>
+                              <div class="mb-3">
+                                    <label for="ipns" class="form-label">Ngày sinh</label>
+                                    <input type="date" name="ns" id="ipns" class="form-control">
+                                    <span id="errns" class="text-danger">(*)</span>
+                              </div>
+                              <div class="mb-3">
+                                    <label for="" class="form-label">Tên đăng nhập</label>
+                                    <input type="text" id="iptdn" class="form-control" placeholder="Abc123">
+                                    <span class="text-danger" id="errtdn">(*)</span>
+                              </div>
+                              <div class="mb-3">
+                                    <label for="" class="form-label">Mật khẩu</label>
+                                    <input type="password" id="ipmk" class="form-control" placeholder="VD: aA1@$!%*?&">
+                                    <span class="text-danger" id="errmk">(*)</span>
+                              </div>
+                              <div class="mb-3">
+                                    <label for="ipdt" class="form-label">Điện thoại</label>
+                                    <input type="text" name="dienthoai" id="ipdt" class="form-control"
+                                          placeholder="VD: 0xxxxxxxxx">
+                                    <span id="errdt" class="text-danger">(*)</span>
+                              </div>
+                              <div class="mb-3">
+                                    <label for="ipemail" class="form-label">Địa chỉ email</label>
+                                    <input type="email" name="email" id="ipemail" class="form-control"
+                                          placeholder="VD: abcxxx@gmail.com">
+                                    <span id="erremail" class="text-danger">(*)</span>
+                              </div>
+                              <br>
+                              <button class="btn btn-success" id="btndk">Đăng ký</button>
+                              <button class="btn btn-success" id="btnxr">Xóa rỗng</button>
+                        </div>
+                        <div class="modal-footer">
+                              <h3 class="text-success text-end p-4">Chào mừng đến với OTO!</h3>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div class="container">
+            <div class="p-2 text-center">
+                  <h2 for="">
+                        <h2 style="color: #ff661b;">OTO</h2> Xin chào quý khách!
+                  </h2>
+                  <div class="">
+                        <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal"
+                              data-bs-target="#modaldk">Đăng ký</button>
+                        <button type="button" class="btn btn-success mx-2"><a href="/HTML/DangNhap.html"
+                                    class="text-decoration-none text-light">Đăng nhập</a></button>
+                  </div>
+            </div>
+            <div class="text-center border">
+                  <h2>Danh sách thành viên</h2>
+            </div>
+            <table class="table" id="tbldk">
+                  <thead>
+                        <tr>
+                              <th scope="col">Số thứ tự</th>
+                              <th scope="col">Họ và tên</th>
+                              <th scope="col">Giới tính</th>
+                              <th scope="col">Ngày sinh</th>
+                              <th scope="col">Tên đăng nhập</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                  <tfoot>
+
+                  </tfoot>
+            </table>
+      </div>
+      <!-- Footer -->
+      <div class="container-fluid px-0 tc-bg mrt">
+            <div class="row px-0">
+                  <div id="footer" class="col-12 col-lg-3 text-start px-4">
+                        <div class="socials-list">
+                              <div class="container">
+                                    <h2 class="copyright mb-4">OTO</h2>
+                                    <ul class="list-unstyled">
+                                       <li>
+                                          <a href="/HTML/Home.html" class="fs16">Trang chủ</a>
+                                          <ul class="list-unstyled ms-3">
+                                             <li>
+                                                <a href="/HTML/Home.html" class="fs16">Danh sách sản phẩm</a>
+                                                <ul class="list-unstyled ms-3">
+                                                   <li><a href="#dsspxe" class="fs16">Xe</a></li>
+                                                   <li><a href="#dssppt" class="fs16">Phụ tùng</a></li>
+                                                </ul>
+                                             </li>
+                                             <li><a href="/HTML/DangKy.html" class="fs16">Đăng ký</a></li>
+                                             <li><a href="/HTML/DangNhap.html" class="fs16">Đăng nhập</a></li>
+                                          </ul>
+                                       </li>
+                                       <li><a href="/HTML/GioiThieuThanhVien.html" class="fs16">Thành viên thực hiện</a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                        </div>
+                  </div>
+                  <div id="footer" class="col-12 col-lg-3 text-start px-4">
+                        <div class="socials-list">
+                              <h2 class="copyright">Giới thiệu</h2>
+                              <p class="copyright">OTO được khách hàng yêu thích độ xe biết đến như một địa chỉ uy tín
+                                    với thế
+                                    mạnh về hàng hóa chất lượng, các thương hiệu sản phẩm độc quyền và đội ngũ kỹ thuật
+                                    nhiều
+                                    năm kinh nghiệm.</p>
+                              <p><i class="fa fa-location-dot"></i> 12 Nguyễn Văn Bảo, Phường 4, Gò Vấp, Thành phố Hồ
+                                    Chí Minh</p>
+                              <P><i class="fas fa-phone"></i> +84 23456789</P>
+                              <p><i class="fa fa-envelope"></i> oto23456789@gmail.com</p>
+                        </div>
+                  </div>
+                  <div id="footer" class="text-start col-12 col-lg-3 px-4">
+                        <div class="socials-list">
+                              <h3 class="copyright">Đăng ký nhận thông tin</h3>
+                              <p class="copyright">Đăng ký email để nhận những thông tin mới nhất từ chúng tôi</p>
+                              <input type="email" class="form-control" placeholder="Địa chỉ email">
+                              <br>
+                              <button type="button" class="btn btn-outline-success">Đăng ký</button>
+                              <br><br>
+                              <p>Mọi thông tin góp ý, vui lòng liên hệ hotline: +84 23456789</p>
+                              <p>Email báo giá liên hệ: baogiaoto@gmail.vn</p>
+                              <p>Đặt hàng: +84 23456789</p>
+                              <button type="button" class="btn btn-outline-info">Tư vấn ngay</button>
+                        </div>
+                  </div>
+                  <div id="footer" class="text-center col-12 col-lg-3 px-4">
+                        <div class="socials-list">
+                              <h3 class="copyright">Kết nối với chúng tôi</h3>
+                              <p class="copyright">Kết nối tới các mạng xã hội của chúng tôi để không bỏ lỡ khuyến mãi
+                                    lớn nào.</p>
+                              <a href=""><i class="ti-facebook mx-3"></i></a>
+                              <a href=""><i class="ti-instagram mx-3"></i></a>
+                              <a href=""><i class="ti-twitter mx-3"></i></a>
+                        </div>
+                  </div>
+                  <div class="col-12">
+                        <div class="w-100">
+                              <img src="/FONT/Logo/logo.png" class="img-fluid mx-auto d-block" style="width: 200px;"
+                                    alt="">
+                        </div>
+                        <h4 class="text-center text-light">Chúng tôi luôn sẵn sàng phục vụ và đồng hành cùng bạn trên
+                              mọi nẻo đường!</h4>
+                        <p class="text-center text-light">&copy;2023 Bản quyền thuộc về OTO</p>
+                  </div>
+            </div>
+            <button onclick="lendautrang()" class="border-0">
+                  <i class="ti-arrow-circle-up ldt"></i>
+            </button>
+            <script>
+                  function lendautrang() {
+                        window.scrollTo({
+                              top: 0,
+                              behavior: "smooth"
+                        });
+                  };
+            </script>
+      </div>
+      <!-- End Footer -->
+</body>
+
+</html>
